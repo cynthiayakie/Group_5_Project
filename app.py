@@ -10,7 +10,7 @@ hockeyApp = Flask("Hockey Data Scrapper")
 hockeyDBEngine = create_engine('sqlite:///hockey_data.db')
 hockeyDBMetadata = MetaData()
 
-# Define the table
+# we used sqlalchemy for database operation
 hockeyDataTable = Table('hockey_data', hockeyDBMetadata,
     Column('id', Integer, primary_key=True),
     Column('team', String),
