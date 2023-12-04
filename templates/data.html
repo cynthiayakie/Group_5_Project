@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Data</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layout.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <h1>Data Page</h1>
+    <p class="center">This page is primarily for educational purposes and these data are not actual figures for reference</p>
+    <table>
+        <tr>
+            <th>Team</th>
+            <th>Year</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Win Percentage</th>
+            <th>Goals For</th>
+            <th>Goals Against</th>
+            <th>Goal Difference</th>
+        </tr>
+        {% for row in data %}
+            <tr>
+                <td>{{ row.team }}</td>
+                <td>{{ row.year }}</td>
+                <td>{{ row.wins }}</td>
+                <td>{{ row.losses }}</td>
+                <td>{{ row.win_percentage }}</td>
+                <td>{{ row.goals_for }}</td>
+                <td>{{ row.goals_against }}</td>
+                <td>{{ row.goal_difference }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back to Search</a>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layout.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <a href="/">Back to Search</a>
+    <h1>Search Results</h1>
+    {% if data %}
+        <table>
+            <tr>
+                <th>Team</th>
+                <th>Year</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Win Percentage</th>
+                <th>Goals For</th>
+                <th>Goals Against</th>
+                <th>Goal Difference</th>
+            </tr>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.team }}</td>
+                    <td>{{ row.year }}</td>
+                    <td>{{ row.wins }}</td>
+                    <td>{{ row.losses }}</td>
+                    <td>{{ row.win_percentage }}</td>
+                    <td>{{ row.goals_for }}</td>
+                    <td>{{ row.goals_against }}</td>
+                    <td>{{ row.goal_difference }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+    <a href="/">Back to Search</a>
+</body>
+</html>
