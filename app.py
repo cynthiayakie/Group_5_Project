@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from bs4 import BeautifulSoup
+import sqlalchemy
 import requests
 from sqlalchemy import create_engine, Table, Column, Integer, String, Float, MetaData, select
 
@@ -10,7 +11,7 @@ hockeyApp = Flask("Hockey Data Scrapper")
 hockeyDBEngine = create_engine('sqlite:///hockey_data.db')
 hockeyDBMetadata = MetaData()
 
-# we used sqlalchemy for database operation
+# Define the table
 hockeyDataTable = Table('hockey_data', hockeyDBMetadata,
     Column('id', Integer, primary_key=True),
     Column('team', String),
@@ -24,6 +25,12 @@ hockeyDataTable = Table('hockey_data', hockeyDBMetadata,
 )
 
 hockeyDBMetadata.create_all(hockeyDBEngine)
+
+
+@hockeyApp.route('/about')
+def about():
+    return render_template('about.html')
+
 
 @hockeyApp.route('/scrape')
 def scrapeData():
